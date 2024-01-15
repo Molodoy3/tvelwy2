@@ -2,12 +2,7 @@
 
 //Необходимо указать имена форм и соответсвующих путей для fetch запроса
 const urls = {
-    "loginForm": "/account/login",
-    "registerForm": "/account/register",
-    "confirmationForm": "/account/confirmation",
-    "recoveryForm": "/account/recovery",
-    "editPasswordForm": window.location.pathname,
-    "editProfileForm": window.location.pathname,
+    "application": "/application",
 };
 
 
@@ -29,28 +24,6 @@ const urls = {
 
 //Для вывода ошибок под элементами проверяемых полей можно указать data-text-error, который создаст <div class="error-element">текст ошибки</div>
 
-
-function openPopup(popup, response) {
-    popup.classList.add('open');
-
-    //Заполнение попапа
-    popup.querySelector(".title").innerText = response["title"];
-    popup.querySelector(".popup__text").innerText = response["text"];
-    const buttonPopup = popup.querySelector(".button");
-    buttonPopup.innerText = response["textButton"];
-    buttonPopup.href = response["linkButton"];
-
-    //Устранение дергания при убирании скрола
-    const lockPaddingValue = window.innerWidth - document.body.offsetWidth + 'px';
-    document.body.style.paddingRight = lockPaddingValue;
-    document.body.style.overflow = "hidden";
-    const header = document.querySelector("header");
-    if (header) {
-        header.style.paddingRight = lockPaddingValue;
-    }
-}
-
-
 const forms = document.forms;
 if (forms.length) {
     let form = forms[0];
@@ -60,7 +33,7 @@ if (forms.length) {
         const formName = form.name;
 
         //!Добавление превью загружаемой картинки
-        if (formName === "editProfileForm") {
+        /* if (formName === "editProfileForm") {
             const fileInput = form.querySelector("input[type='file']");
             let image;
             fileInput.addEventListener("change", e => {
@@ -69,7 +42,7 @@ if (forms.length) {
                 form.querySelector(".account__image").innerHTML = `<img data-open-image src="${imageUrl}" alt="Фото профиля">`;
                 form.querySelector(".account__add-image").innerText = "Изменить картинку";
             });
-        }
+        } */
 
         form = forms[index];
         const url = urls[formName];
@@ -77,7 +50,7 @@ if (forms.length) {
             form.addEventListener('submit', formSend);
 
             //!Телефонная маска для полей с типом tel
-            //telephonMask(form);
+            telephonMask(form);
         } else {
             console.log("FormValidate: для формы " + formName + " не задан url в объекте!!!");
         }
@@ -85,10 +58,10 @@ if (forms.length) {
 
     //Отправка формы
     async function formSend(e) {
-        e.preventDefault();
+        //e.preventDefault();
         let errors = formValidate(form);
         if (errors === 0) {
-            //!Отправка формы
+            /* //!Отправка формы
             const url = urls[form.name];
             const formData = new FormData(form);
 
@@ -102,23 +75,11 @@ if (forms.length) {
                     if (popup) {
                         if (response["status"] === "success") {
 
-                            openPopup(popup, response);
-
                             //очистка формы
                             form.reset();
 
-                            //Блокировка кнопки
-                            const button = document.querySelector("[data-block-after]");
-                            if (button) {
-                                button.style.cssText = "opacity: 0.5; pointer-events: none";
-                                button.tagName = "a";
-                                button.href = "/";
-                                delete button.type;
-                            }
-
                             e.preventDefault();
                         } else {
-                            openPopup(popup, response);
                             e.preventDefault();
                         }
                     }
@@ -134,9 +95,10 @@ if (forms.length) {
                 errorElements.forEach(item => {
                     item.remove();
                 });
-            }
+            } */
         } else {
             //?Ошибка
+            e.preventDefault();
             form.classList.add('error');
         }
     }
@@ -215,6 +177,7 @@ if (forms.length) {
                 //Проверка выбранных checkbox
                 else if (input.type === "checkbox" && input.checked === false) {
                     formAddError(input);
+                    console.log(111)
                     errors++;
                     if (!isMessageOutput) {
                         setTextError(input);
