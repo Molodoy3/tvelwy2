@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/head.html', {
+'title': 'Tvelvi'
+})
+
+<body>
+    <div class="wrapper">
+        @@include('html/header.html')
+        <div class="page">
+            <section class="welcome-block">
+                <div class='welcome-block__container'>
+                    <h1 class="welcome-block__title title">Творим цифровые чудеса</h1>
+                    <div class="welcome-block__text">
+                        <p>Мы создаем удобные веб-сервисы и мобильные приложения, которые понимают и поддерживают ваших
+                            клиентов</p>
+                    </div>
+                    <button class="welcome-block__button button" type="button"
+                        data-button-for-open-custom-popup="application">Обсудить проект</button>
+                </div>
+            </section>
+            <section class="window-application" data-custom-popup="application">
+                <div class="window-application__body">
+                    <div class="window-application__content" data-custom-popup-content>
+                        <button type="button" class="window-application__close" data-close-for-custom-popup><img
+                                src='@img/icons/close.svg' alt='close'></button>
+                        <h3 class="window-application__title">Оставьте заявку и получите оценку вашего проекта и 1-часовую
+                            консультацию бизнес-аналитика</h3>
+                        <form name="application" action="application.html" method="POST" class="window-application__form">
+                            <div class="window-application__inputs">
+                                <input data-req data-req-min="2" type="text" name="firstName" placeholder="Имя"
+                                    class="window-application__input">
+                                <input data-req data-req-tel type="tel" data-mask-tel name="tel"
+                                    placeholder="+7 (___) ___-__-__" class="window-application__input">
+                                <input data-req data-req-email type="email" name="email" placeholder="user@gmail.com"
+                                    class="window-application__input">
+                                <input data-req data-req-min="2" type="task" name="task" placeholder="Задача"
+                                    class="window-application__input">
+                            </div>
+                            <button class="window-application__button button" type="submit">Обсудить проект</button>
+                            <label class="window-application__radio-item">
+                                <input data-req type="checkbox" name="personal-data">
+                                <span></span>
+                                Согласен на обработку <a href="">персональных данных</a>
+                            </label>
+                            <label class="window-application__radio-item">
+                                <input checked type="checkbox" name="personal-data">
+                                <span></span>
+                                Согласен на получение рекламных материалов
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="blue-block">
+                <img src='@img/blue-block/bg.jpg' alt='background'>
+                <div class='blue-block__container'>
+                    <div class="blue-block__item">
+                        <div class="blue-block__label">Команда под каждый проект</div>
+                        <div class="blue-block__decor"></div>
+                        <div class="blue-block__text">
+                            Для каждого заказа формируется отдельная малая команда его разработчиков, дизайнеров и
+                            менеджеров. Это позволяет обеспечить максимальную сфокусированность на задачах клиента
+                        </div>
+                    </div>
+                    <div class="blue-block__item">
+                        <div class="blue-block__label">Поддержка на всех этапах</div>
+                        <div class="blue-block__decor"></div>
+                        <div class="blue-block__text">
+                            Мы поддерживаем проекты на этапах разработки, запуска и послепродажного обслуживания для
+                            максимальной отдачи от вложений. У вас будет личный менеджер на протяжении всей работы с нами
+                        </div>
+                    </div>
+                    <div class="blue-block__item">
+                        <div class="blue-block__label">Безопасные и устойчивые продукты</div>
+                        <div class="blue-block__decor"></div>
+                        <div class="blue-block__text">
+                            Наша цель - обеспечить бесперебойную и безаварийную работу сервисов, защищенность данных и
+                            масштабируемость
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="decisions">
+                <div class='decisions__container'>
+                    <h2 class="decisions__title title">IT-решения для вашего бизнеса</h2>
+                    <div class="decisions__item">
+                        <div class="decisions__content">
+                            <div class="decisions__label title title_small">Мобильные приложения</div>
+                            <div class="decisions__text">Мы создаем высококачественные мобильные приложения под iOS и
+                                Android на современных фреймворках React Native, Flutter, Swift и Kotlin. Наши специалисты
+                                разработают:</div>
+                            <ul class="decisions__list">
+                                <li>Корпоративные приложения для автоматизации бизнес-процессов</li>
+                                <li>Приложения для электронной коммерции</li>
+                                <li>Сервисы доставки и логистики</li>
+                                <li>Сервисы для государственных организаций</li>
+                                <li>Приложения лояльности и маркетинга</li>
+                                <li>Игры и развлекательные сервисы</li>
+                            </ul>
+                            <div class="decisions__bottom">
+                                <button class="decisions__button button"
+                                    data-button-for-open-custom-popup="application">Обсудить проект</button>
+                                <div class="decisions__bottom-text">+ получите 1-часовую сессию с ведущим бизнес-аналитиком
+                                </div>
+                            </div>
+                        </div>
+                        <div class="decisions__image">
+    
+                        </div>
+                    </div>
+                    <div class="decisions__item decisions__item_reverse">
+                        <div class="decisions__content">
+                            <div class="decisions__label title title_small">Веб-приложения</div>
+                            <div class="decisions__text">Мы создаем функциональные и удобные веб-сайты и порталы на
+                                современных технологиях:</div>
+                            <ul class="decisions__list">
+                                <li>Корпоративные сайты и интернет-магазины</li>
+                                <li>
+                                    Информационные порталы
+                                </li>
+                                <li>
+                                    Порталы для госучреждений
+                                </li>
+                                <li>
+                                    Сервисы онлайн-обучения
+                                </li>
+                                <li>
+                                    Лендинги и маркетинговые страницы
+                                </li>
+                                <li>
+                                    Сайты-визитки и портфолио
+                                </li>
+    
+                            </ul>
+                            <div class="decisions__bottom">
+                                <button class="decisions__button button"
+                                    data-button-for-open-custom-popup="application">Обсудить проект</button>
+                                <div class="decisions__bottom-text">+ получите 1-часовую сессию с ведущим бизнес-аналитиком</div>
+                            </div>
+                        </div>
+                        <div class="decisions__image">
+    
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="grey-block">
+                <div class='grey-block__container'>
+                    <div class="grey-block__label title">Наш подход - уделять максимальное время каждому клиенту</div>
+                    <h3 class="grey-block__title title">1 проект = 1 команда</h3>
+                    <div class="grey-block__label grey-block__label_bottom">Мы не пытаемся взять все и сразу, а выделяем специалистов, которые наиболее сильны в задачах вашей разработки</div>
+                </div>
+            </section>
+            <section class="stages">
+                <div class='stages__container'>
+                    <h3 class="stages__title title title_small">Мы компания полного цикла: несем ответственность за каждый этап разработки</h3>
+                    <div class="stages__subtitle">Как мы будем работать над вашим проектом:</div>
+                    <ol class="stages__list">
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">Сбор требований к приложению</div>
+                            <div class="stages__text">На этапе сбора требований мы тщательно выясняем цели проекта, ожидания от приложения, функциональные и нефункциональные требования</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">Предварительная оценка стоимости разработки</div>
+                            <div class="stages__text">Создаем детальное техническое задание, в котором формулируются функциональные и технические требования к сервису. Это документ, который станет основой для всей разработки и обеспечит четкое понимание стоимости и сроков проекта</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">Проектирование прототипа</div>
+                            <div class="stages__text">Разрабатываем прототип, который демонстрирует основные функции и структуру веб-сервиса. Это позволяет вам визуализировать конечный продукт и внести коррекции на ранних этапах, а также максимально удовлетворить юзер-экспириенс</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">создание ux/ui дизайна</div>
+                            <div class="stages__text">Создаем уникальный и интуитивно понятный пользовательский интерфейс. Уделяем особое внимание оптимизации пользовательского опыта (UX) и привлекательному дизайну (UI), чтобы обеспечить комфортное взаимодействие пользователей с сервисом</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">Разработка первого релиза продукта</div>
+                            <div class="stages__text">На этом этапе начинается создание программного обеспечения, включая функциональные модули, базу данных и бэкенд. Мы используем передовые технологии и практики разработки для обеспечения высокой производительности и безопасности</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">тестирование</div>
+                            <div class="stages__text">Осуществляем полное тестирование функциональности, производительности и безопасности вашего приложения. Это важный этап, на котором выявляются и устраняются потенциальные проблемы и ошибки</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">публикация</div>
+                            <div class="stages__text">После успешного прохождения внутренней проверки приступаем к публикации релиза, готовя всю необходимую графику, описания и внося приложение на сертификацию. После её успешного прохождения осуществляем вывод разработанного продукта в официальные магазины</div>
+                        </li>
+                        <li class="stages__item">
+                            <div class="stages__num">0</div>
+                            <div class="stages__label">техническая поддержка</div>
+                            <div class="stages__text">После запуска сервиса предоставляем гарантийную поддержку, следим за его работоспособностью и реагируем на возникающие вопросы или неполадки. Мы гарантируем качество и надежность вашего веб-сервиса на долгий срок</div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+        @@include('html/footer.html')
+    </div>
+    <script src="js/formValidate.js"></script>
+    <script src="js/app.min.js"></script>
+</body>
+
+</html>

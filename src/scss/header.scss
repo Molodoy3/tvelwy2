@@ -1,0 +1,224 @@
+.header {
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        @include adaptiv-value('column-gap', 15, 10, 1);
+        align-items: center;
+        min-height: rem(124);
+        @media (max-width: $md2){
+            min-height: rem(100);
+        }
+        @media (max-width: $md3){
+            min-height: rem(80);
+        }
+    }
+
+    &__logo {
+        @include adaptiv-value('width', 200, 120, 1);
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 5;
+        @media (max-width: 360px){
+            width: rem(90);
+        }
+        &:focus {
+            transform: scale(1.05);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        @media (max-width: $md1){
+            order: 2;
+        }
+    }
+
+    &__menu {
+        @media (max-width: $md1){
+            order: 1;
+        }
+    }
+
+    &__application {
+        position: relative;
+        z-index: 5;
+        @media (max-width: $md1){
+            order: 3;
+        }
+        display: inline-flex;
+        align-items: center;
+        @include adaptiv-value('column-gap', 10, 5, 1);
+        @include adaptiv-value('font-size', 24, 16, 1);
+        img{
+            transition: transform 0.3s ease;
+            @include adaptiv-value('width', 16, 10, 1);
+        }
+        &:focus {
+            img{
+                transform: translate(rem(5), 0);
+            }
+        }
+        @media (any-hover: hover) {
+            &:hover{
+                img{
+                    transform: translate(rem(5), 0);
+                }
+            }
+        }
+    }
+}
+
+.menu {
+    font-family: 'Anonymous Pro', monospace;
+    &__icon {}
+
+    &__body {}
+
+    &__list {}
+
+    &__link {}
+
+    &__icon {
+        @media (min-width: $md1) {
+            display: none;
+        }
+
+        display: block;
+        width: rem(35);
+        height: rem(20);
+        @media (max-width: 360px){
+            width: rem(28);
+            height: rem(18);
+        }
+        position: relative;
+        z-index: 5;
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+
+        &::after,
+        &::before,
+        >span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: rem(2);
+            background-color: var(--color-main);
+            right: 0;
+            transition: all 0.5s ease 0s;
+        }
+
+        &::after {
+            top: 0;
+        }
+
+        &::before {
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        >span::after {
+            bottom: 0;
+        }
+
+        &.active {
+            >span::after {
+                transform: scale(0);
+            }
+
+            &::before {
+                top: 50%;
+                transform: translate(0, -50%) rotate(45deg);
+            }
+
+            &::after {
+                transform: rotate(-45deg) translate(0, -50%);
+                top: 50%;
+            }
+        }
+    }
+
+    &__body {
+        @media (max-width: $md1) {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            top: 0;
+            left: -100%;
+            padding: rem(90) rem(10) rem(30) rem(10);
+            overflow: auto;
+            transition: left 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+
+            &.open {
+                left: 0;
+                opacity: 1;
+
+                &::after {
+                    left: 0;
+                    opacity: 1;
+                }
+            }
+
+            &::after {
+                content: '';
+                position: fixed;
+                width: 100%;
+                height: 124px;
+                @media (max-width: $md2){
+                    height: rem(100);
+                }
+                @media (max-width: $md3){
+                    height: rem(80);
+                }
+                background-color: #fff;
+                top: 0;
+                left: -100%;
+                opacity: 0;
+                transition: left 0.3s ease, opacity 0.3s ease;
+            }
+        }
+
+        >ul {
+            @media (min-width: $md1) {
+                display: flex;
+                align-items: center;
+                @include adaptiv-value('column-gap', 33, 15, 1);
+            }
+
+            >li {
+                position: relative;
+                display: inline-block;
+                //line-height: 130%;
+                @media (max-width: $md1) {
+                    font-size: rem(35);
+                    display: block;
+
+                    &:not(:last-child) {
+                        margin-bottom: rem(20);
+                    }
+                }
+
+                a {
+                    color: inherit;
+
+                    @media (any-hover: hover) {
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: var(--blue);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

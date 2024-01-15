@@ -1,0 +1,585 @@
+/*Подключение функций, миксинов /=============================================================================*/
+@use 'sass:math';
+@import 'functions';
+/*=============================================================================================================*/
+/*Подключение шрифтов /=============================================================================*/
+/* @import 'fonts.scss'; */
+/*=============================================================================================================*/
+/*Размер шрифта по умолчанию /=============================================================================*/
+$mainFontSize: 20;
+/*=============================================================================================================*/
+/*Контейнер и сетка /=============================================================================*/
+$mw: 1440;
+$minwidth: rem(320);
+$md1: rem($mw+12);
+$md2: rem(992.98);
+$md3: rem(767.98);
+$md4: rem(479.98);
+
+[class*="__container"] {
+    max-width: rem($mw);
+    margin: 0 auto;
+    padding: 0 rem(10);
+    width: 100%;
+}
+
+/* .container{max-width: $mw; margin: 0 auto; width: 100%;
+    @media (max-width: $md1){max-width: 970px;}
+    @media (max-width: $md2){max-width: 750px;}
+    @media (max-width: $md3){max-width: 470px; padding: 0 10px;}
+    @media (max-width: $md4){max-width: 100%; padding: 0 10px;}
+} */
+/*=============================================================================================================*/
+/*Иконочный шрифт /=============================================================================*/
+/* @import 'icons'; */
+/*=============================================================================================================*/
+/*Обнуление /=============================================================================*/
+@import 'null';
+/*=============================================================================================================*/
+/*Переменные для адаптивного свойства /=============================================================================*/
+$maxWidth: 1920; //макс ширина
+$maxWidthContainer: 1920; //ширина макета
+
+/*=============================================================================================================*/
+/*Основные цвета /=============================================================================*/
+:root {
+    //?Заполнить
+    --color-main: #000;
+    --black: #323232;
+    --grey: #494949;
+    --blue: #98FAEA;
+    --white: #fff;
+}
+
+/*=============================================================================================================*/
+/*Основные стили /=============================================================================*/
+body {
+    font-size: rem($mainFontSize);
+    font-family: 'IBM Plex Mono', monospace;
+
+    //line-height: 130%;
+    //font-family: 'Anonymous Pro', monospace;
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+* {
+    line-height: 120%;
+}
+
+.wrapper {
+    min-height: 100%;
+    width: 100%;
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: transparent;
+    font-size: rem(20);
+}
+
+.page {
+    flex: 1 1 auto;
+}
+
+/*=============================================================================================================*/
+/*Общие блоки /=============================================================================*/
+.title {
+    font-weight: 500;
+    @include adaptiv-value('font-size', 64, 40, 1);
+
+    &_small {
+        @include adaptiv-value('font-size', 48, 34, 1);
+    }
+}
+
+.button {
+    color: var(--white);
+    background-color: var(--black);
+    padding: rem(22) rem(25);
+    @include adaptiv-value('font-size', 24, 20, 1);
+    border-radius: rem(20);
+    display: inline-block;
+
+    @media (max-width: $md3) {
+        display: block;
+        width: 100%;
+    }
+
+    transition: background-color 0.3s ease;
+
+    &:focus {
+        background-color: var(--color-main);
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--color-main);
+        }
+    }
+}
+
+p {
+    &:not(:last-child) {
+        margin-bottom: em(20, 20);
+    }
+}
+
+/*=============================================================================================================*/
+@import "header";
+
+/*=============================================================================================================*/
+.welcome-block {
+    @include adaptiv-value('padding-top', 170, 30, 1);
+    @include adaptiv-value('padding-bottom', 150, 60, 1);
+
+    &__container {
+        text-align: center;
+    }
+
+    &__title {
+        @include adaptiv-value('font-size', 72, 45, 1);
+        margin-bottom: em(47, 72);
+    }
+
+    &__text {
+        @include adaptiv-value('font-size', 36, 25, 1);
+        @include adaptiv-value('margin-bottom', 147, 25, 1);
+    }
+
+    &__button {
+        @include adaptiv-value('font-size', 36, 25, 1);
+    }
+}
+
+/*=============================================================================================================*/
+.blue-block {
+    position: relative;
+    @include adaptiv-value('margin-bottom', 240, 60, 1);
+    color: var(--white);
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+        z-index: -1;
+    }
+    &__container {
+        @media (min-width: $md3){
+            @include adaptiv-value('padding-left', 127, 30, 1);
+            @include adaptiv-value('padding-right', 43, 20, 1);
+        }
+        @include adaptiv-value('padding-top', 44, 25, 1);
+        @include adaptiv-value('padding-bottom', 60, 30, 1);
+        flex-wrap: wrap;
+        align-items: center;
+        @include adaptiv-value('gap', 140, 15, 1);
+        grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+        display: grid;
+    }
+
+    &__item {
+        
+    }
+
+    &__label {
+        font-weight: 500;
+        @include adaptiv-value('margin-bottom', 23, 11.5, 1);
+    }
+
+    &__decor{
+        width: rem(66);
+        height: rem(1);
+        background-color: var(--white);
+        @include adaptiv-value('margin-bottom', 23, 11.5, 1);
+    }
+
+    &__text {
+        font-size: rem(14);
+    }
+}
+
+/*=============================================================================================================*/
+.decisions {
+    @include adaptiv-value('margin-bottom', 290, 60, 1);
+    &__container {
+        padding: 0 0px;
+    }
+
+    &__title {
+        max-width: rem(741);
+        margin: 0 auto;
+        text-align: center;
+        @include adaptiv-value('margin-bottom', 83, 30, 1);
+        padding: 0 rem(10);
+        
+    }
+
+    &__item {
+        &:not(:last-child) {
+            @include adaptiv-value('margin-bottom', 66, 30, 1);
+        }
+        border-radius: rem(20);
+        overflow: hidden;
+        background: #ECECEC;
+        @include adaptiv-value('padding-top', 78, 20, 1);
+        @include adaptiv-value('padding-bottom', 91, 23, 1);
+        @include adaptiv-value('padding-left', 81, 15, 1);
+        @include adaptiv-value('padding-right', 81, 15, 1);
+        @media (min-width: $md3){
+            display: flex;
+            @include adaptiv-value('column-gap', 74, 30, 1);
+        }
+
+        &_reverse {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__content {
+        @media (min-width: $md3){
+            flex: 1 1 auto;
+        }
+        @media (max-width: $md3){
+            margin-bottom: rem(20);
+        }
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__label {
+        @include adaptiv-value('margin-bottom', 38, 20, 1);
+    }
+
+    &__text {
+        @include adaptiv-value('margin-bottom', 38, 20, 1);
+    }
+
+    &__list {
+        flex: 1 1 auto;
+        @include adaptiv-value('margin-bottom', 38, 20, 1);
+    }
+
+    &__bottom {
+        display: flex;
+        @include adaptiv-value('gap', 32, 15, 1);
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__button {}
+
+    &__bottom-text {
+        font-size: 15px;
+        text-align: center;
+        max-width: 253;
+        flex: 0 1 rem(253);
+    }
+
+    &__image {
+        background-color: var(--grey);
+        @media (min-width: $md3){
+            flex: 0 0 perc(589, 1293);
+        }
+        position: relative;
+        height: rem(617);
+        @media (max-width: $md2){
+            @include adaptiv-value('height', 600, 400, 1);
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+/*=============================================================================================================*/
+
+/*=============================================================================================================*/
+.grey-block {
+    background-color: var(--grey);
+    @include adaptiv-value('margin-bottom', 261, 60, 1);
+    @include adaptiv-value('padding-top', 153, 40, 1);
+    @include adaptiv-value('padding-bottom', 153, 40, 1);
+    text-align: center;
+    color: var(--white);
+    &__container {
+
+    }
+
+    &__label {
+        @include adaptiv-value('margin-bottom', 103, 40, 1);
+        margin: 0 auto;
+        max-width: rem(1400);
+        &_bottom{
+            @include adaptiv-value('font-size', 36, 26, 1);
+            max-width: rem(889);
+        }
+    }
+
+    &__title {
+        @include adaptiv-value('margin-bottom', 127, 50, 1);
+        font-weight: 500;
+        @include adaptiv-value('font-size', 96, 60, 1);
+    }
+}
+/*=============================================================================================================*/
+.stages {
+    @include adaptiv-value('margin-bottom', 213, 60, 1);
+    &__container {}
+
+    &__title {
+        max-width: rem(802);
+        margin-bottom: em(49, 48);
+    }
+
+    &__subtitle {
+        font-weight: 400;
+        @include adaptiv-value('font-size', 32, 24, 1);
+        @include adaptiv-value('margin-bottom', 98, 35, 1);
+    }
+
+    &__list {
+        counter-reset: item;
+        list-style-type: none;
+    }
+
+    &__item {
+        display: flex;
+        position: relative;
+        align-items: center;
+        @media (max-width: 600px){
+            flex-wrap: wrap;
+        }
+        justify-content: space-between;
+        @include adaptiv-value('gap', 25, 20, 1);
+        @include adaptiv-value('padding-top', 49, 25, 1);
+        @include adaptiv-value('padding-bottom', 40, 20, 1);
+        &::after{
+            content:'';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            @media (min-width: 600px){
+                width: perc(1114, 1440);
+            }
+            width: 100%;
+            height: rem(1);
+            background-color: #252525;
+            opacity: 0.2;
+        }
+    }
+
+    &__num {
+        @media (max-width: 600px){
+            flex: 0 1 100%;
+            //text-align: center;
+        }
+        color: #252525;
+        @include adaptiv-value('font-size', 36, 24, 1);
+        &::after {
+            content: counter(item) " ";
+            counter-increment: item;
+        }
+    }
+
+    &__label {
+        max-width: rem(339);
+        text-transform: uppercase;
+        @include adaptiv-value('font-size', 36, 24, 1);
+    }
+
+    &__text {
+        max-width: rem(559);
+        @include adaptiv-value('font-size', 24, 20, 1);
+        color: rgba(37, 37, 37, .6);
+    }
+}
+/*=============================================================================================================*/
+/*=============================================================================================================*/
+/*=============================================================================================================*/
+.window-application {
+    &.open {
+        z-index: 700;
+        overflow-y: auto;
+
+        .window-application__body {
+            opacity: 1;
+        }
+
+        .window-application__content {
+            transform: scale(1);
+        }
+    }
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    overflow: hidden;
+    text-align: center;
+
+    &__body {
+        opacity: 0;
+        -webkit-transition: opacity .6s ease;
+        transition: opacity .6s ease;
+        background: rgba(27, 27, 27, .6);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 3.75rem;
+        //padding-top: 3.75rem !important;
+        min-height: 100%;
+
+        @media (max-width: 1920px) {
+            padding: calc(10px + 50 * (100vw - 320px)/ 1600);
+        }
+    }
+
+    &__content {
+        max-width: rem(970);
+        background-color: var(--white);
+        transition: transform 0.6s ease 0s;
+        transform: scale(0.45);
+        @include adaptiv-value('padding-top', 70, 30, 1);
+        @include adaptiv-value('padding-bottom', 130, 35, 1);
+        @include adaptiv-value('padding-left', 124, 25, 1);
+        @include adaptiv-value('padding-right', 124, 25, 1);
+        position: relative;
+        box-shadow: -14px -27px 25.3px 0px rgba(0, 0, 0, 0.25) inset;
+    }
+
+    &__close {
+        position: absolute;
+        @include adaptiv-value('top', 30, 10, 1);
+        @include adaptiv-value('right', 46, 15, 1);
+        transition: transform 0.3s ease;
+
+        &:focus {
+            transform: scale(1.1);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        img {
+            width: rem(20);
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        @include adaptiv-value('font-size', 40, 28, 1);
+        @include adaptiv-value('margin-bottom', 99, 25, 1);
+        text-align: center;
+    }
+
+    &__form {}
+
+    &__inputs {
+        display: flex;
+        justify-content: space-between;
+        @include adaptiv-value('column-gap', 32, 15, 1);
+        @include adaptiv-value('row-gap', 40, 20, 1);
+        flex-wrap: wrap;
+        @include adaptiv-value('margin-bottom', 107, 25, 1);
+    }
+
+    &__input {
+        border: 3px solid #000;
+        flex: 1 1 auto;
+        
+        width: 100%;
+        @include adaptiv-value('width', 344, 280, 1);
+        @include adaptiv-value('height', 71, 60, 1);
+        padding: 0 rem(24);
+        @include adaptiv-value('font-size', 24, 20, 1);
+        color: var(--grey);
+        transition: box-shadow 0.3s ease 0s;
+
+        &.error {
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.575);
+        }
+
+        &:focus {
+            box-shadow: 0px 0px 10px #0000008c;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        display: block;
+        @include adaptiv-value('margin-bottom', 40, 25, 1);
+    }
+
+    &__radio-item {
+        display: flex;
+        font-size: rem(12);
+        color: var(--black);
+        text-align: left;
+        align-items: center;
+        cursor: pointer;
+        column-gap: rem(13);
+
+        &:not(:last-child) {
+            margin-bottom: rem(22);
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        span {
+            width: rem(22);
+            height: rem(22);
+            background: url(../img/icons/radio.svg) 0 0 / 22px no-repeat;
+        }
+
+        input[type="checkbox"].error+span {
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.575);
+        }
+
+        input[type="checkbox"]:checked+span {
+            background: url(../img/icons/radio-active.svg) 0 0 / 22px no-repeat;
+        }
+
+        a {
+            text-decoration: underline;
+            color: inherit;
+            transition: color 0.3s ease;
+
+            &:focus {
+                color: var(--blue);
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    color: var(--blue);
+                }
+            }
+        }
+    }
+}
+
+/*=============================================================================================================*/
+//footer
+@import "footer";
